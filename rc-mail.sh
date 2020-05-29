@@ -1,16 +1,15 @@
-######## 必须修改的变量 ########
+######## 邮件目的地变量 ########
 mail=${1:-"mail@qq.com"} #自定义.修改mail@qq.com成要发往的邮箱地址;同时支持传递脚本参数(第一个参数是$1)。"语法:bash rc-mail.sh 8888@qq.com"
 echo "传入参数:$@"
 echo "mail变量:$mail"
-######## 可不修改的变量 ########
+######## 邮件标题变量 ########
 svr_name="[rclone配置状态检查]" ###自定义.邮件主体名称
 str_time=$(date +"%Y-%m-%d") #日期变量
 title="$svr_name $str_time" #邮件标题
 failedtitle="报错 $svr_name $str_time" #执行错误后的邮件标题
 succeedtitle="正常 $svr_name $str_time" #执行正确后的邮件标题
-######## 动态变量 ########
+######## rclone配置提取成数组变量 ######## "rclone config file查看配置文件的路径"
 rcloneconf=$(grep -oP '(?<=\[).*?(?=\])' /root/.config/rclone/rclone.conf | tr "\n" " ") #使用tr命令将文本中的回车转换成空格
-
 array=($rcloneconf) #转成数组
 num=${#array[@]} #获取数组数量 
 echo "输出rcloneconf:$rcloneconf"
@@ -18,7 +17,8 @@ echo "输出array:$array"
 echo "输出num总数:$num"
 echo "-----------" #换行
 
-for var in ${rcloneconf[@]};   #数组循环
+################ 数组循环 ################ 
+for var in ${rcloneconf[@]};   
 do
     let ++i #i的值递增1
     echo "输出标签:$var[$i/$num]"
@@ -32,7 +32,7 @@ do
  fi
     echo -e "输出rclonelsd执行结果:\n${rclonelsd}"
 
- ###### 发送邮件 #####
+ #### 发送邮件 ####
     runinfo=$(time rclone size $var: 2>&1) #查询目录占用体积,如果文件数量非常多耗时比较久可以禁用此命令
     echo $runinfo
     echo -e "$var[$i/$num]\n${rclonelsd}\n${runinfo}\n结尾" | mutt -s "$title[$num]信尾" $mail #echo -e使之激活转义字符        
