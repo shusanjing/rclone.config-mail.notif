@@ -1,3 +1,5 @@
+![image](https://raw.githubusercontent.com/shusanjing/rclone.config-mail.notif/master/示例-收到的邮件.png)
+
 # rclone.config-mail.notif
 谷歌盘监控并且通知邮箱报错
 
