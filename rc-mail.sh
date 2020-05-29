@@ -35,10 +35,10 @@ do
 	echo -e "输出rclonelsd执行结果:\n${rclonelsd}"
 #    echo -e "$var[$i/$num]\n${rclonelsd}" | mutt -s "$title[$num]信尾" $mail   #echo -e使之激活转义字符
  
-#    runinfo=$(time rclone size $var: 2>&1) # ,如果文件数量非常多耗时比较久可以禁用此命令
- #   echo $runinfo   
-     time ls
-#    echo -e "$var[$i/$num]\n${rclonelsd}\n${runinfo}\n结尾" | mutt -s "$title[$num]信尾" $mail   #echo -e使之激活转义字符        
+ 
+    runinfo=$(time rclone size $var: 2>&1) # ,如果文件数量非常多耗时比较久可以禁用此命令
+    echo $runinfo
+    echo -e "$var[$i/$num]\n${rclonelsd}\n${runinfo}\n结尾" | mutt -s "$title[$num]信尾" $mail   #echo -e使之激活转义字符        
 
     echo "邮件发送完毕-----------" #换行
 done
