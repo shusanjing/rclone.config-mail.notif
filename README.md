@@ -1,5 +1,22 @@
 ![image](https://raw.githubusercontent.com/shusanjing/rclone.config-mail.notif/master/示例-收到的邮件.png)
 
+```
+邮件正文:
+gc[8/8]:
+
+-1 2019-05-29 22:17:20 -1 [Auto]
+-1 2019-05-29 20:02:06 -1 [PT]
+-1 2019-05-31 05:42:02 -1 [测试用视频]
+-1 2019-09-19 00:30:08 -1 【藏·剧集+动画】
+-1 2019-09-19 13:30:16 -1 【藏·电影】
+-1 2019-09-18 13:30:06 -1 【藏·综艺记录】
+
+Total objects: 35350
+Total size: 19.812 TBytes (21783115903930 Bytes)
+
+脚本运行于: 2020-07-02 12:46:24
+```
+
 # rclone.config-mail.notif
 谷歌盘监控并且通知邮箱报错
 
