@@ -18,6 +18,7 @@ Total size: 19.812 TBytes (21783115903930 Bytes)
 ```
 
 # rclone.config-mail.notif
+* 适用谷歌 个人盘 和 团队盘.
 * 项目目的:监控谷歌盘是否被删并且通知邮箱报错.
 * 实现原理:通过自动提取rclone.conf配置文件,依次rclone size检查,报错或者返回0kb(团队盘刚被删不会立即报错,只是内容变空,返回0kb大小)则发邮件告知报错.
 * 脚本:项目有bash和python3两种脚本,功能相同,需要的邮件模块不同,建议使用python脚本搭配yagmail.
